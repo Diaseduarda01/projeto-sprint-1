@@ -1,4 +1,5 @@
 function calcularROI() {
+
     const capacidade = Number(input_capacidade.value); // Capacidade do reservatório do cliente (em m³)
 
     const perdaAgua = Number(input_perda_agua.value); // Percentual de perda de água dentro do reservatório
@@ -23,15 +24,14 @@ function calcularROI() {
     // Calcular o ROI acumulado ao longo dos anos
     let ganhoAcumulado = 0;
     let custoAcumulado = 0;
-    let roiAcumulado = 0;   
+    let roiAcumulado = 0;
 
     for (let i = 1; i <= anos; i++) {
         ganhoAcumulado += ganhoObtidoAnual; // Somar o ganho anual ao ganho acumulado
         custoAcumulado += custoManutencao; // Somar o custo anual ao custo acumulado
 
         // Calcular o ROI acumulado até o ano atual
-        roiAcumulado = ((ganhoAcumulado - custoAcumulado) / custoAcumulado) * 100;
-
+        roiAcumulado += ((ganhoAcumulado - custoAcumulado) / custoAcumulado) * 100;
     }
 
     div_exibir.innerHTML = `
@@ -39,8 +39,33 @@ function calcularROI() {
             <p>O ganho obtido com a economia de água por ano é: R$ ${ganhoObtidoAnual.toFixed(2)}
             <p>O ganho acumulado em ${anos} anos é: R$ ${ganhoAcumulado.toFixed(2)}
             <p>O ROI acumulado após ${anos} anos é: ${roiAcumulado.toFixed(2)}%</p>
-            `;
 
-    
+            <style>
+                button {
+                    width: 100%;
+                    margin-top: 2.5rem;
+                    border: none;
+                    background-color: #53a7f5;
+                    padding: 0.62rem;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    }
+                button:hover{
+                background-color: #4389ca;
+                }
+                p{
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                    color: #000000c0
+                }
+                button a {
+                    text-decoration: none;
+                    font-size: 0.93rem;
+                    font-weight: 500;
+                    color:#ffff;
+
+            </style>
+
+            <button onclick="window.location.reload();"><a>Realizar outra simulação</a></button>
+            </div>`;
 }
-
