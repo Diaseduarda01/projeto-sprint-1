@@ -1,116 +1,110 @@
-create database daryo;
-use daryo;
+CREATE DATABASE DaryoEmpresa;
+USE DaryoEmpresa;
 
-create table reservatorio (
-id int primary key auto_increment,
-localizacao varchar(100),
-capacidade_maxima_litros decimal(7,2),
-altura decimal(3,2),
-diametro decimal(3,2)
+CREATE TABLE Usuario(
+idUsuario int primary key auto_increment,
+idEmpresa int,
+nomeUsuario varchar(100) not null,
+emailUsuario varchar(100) not null unique,
+senhaUsuario varchar(255) not null unique,
+tipoUsuario enum('Cliente','Administrador') not null,
+dataDoCadastro date not null
+);
+SELECT * FROM USUARIO;
+
+CREATE TABLE Empresa(
+idEmpresa int primary key auto_increment,
+nomeEmpresa varchar(100) not null,
+cnpjEmpresa varchar(14) not null unique,
+enderecoEmpresa varchar(100)not null,
+telefoneEmpresa varchar(15)not null,
+emailEmpresa varchar(100)not null,
+dataDoCadastro date not null
 );
 
-select * from reservatorio;
-describe reservatorio;
+CREATE TABLE Reservatorio (
+idReservatorio int primary key auto_increment,
+idSensor int not null,
+localizacao varchar(100) not null,
+capacidadeMaxLitros decimal(7,2)not null,
+altura decimal(3,2)not null,
+diametro decimal(3,2)not null
+);
 
-alter table reservatorio change id idReservatorios int auto_increment;
-alter table reservatorio change idReservatorios idReservatorio int auto_increment;
-
-insert into reservatorio values
-(default, 'Fazenda Daryo', 80.000, 8.00, 4.00);
-
-update reservatorio set capacidade_maxima_litros = 80000.00 where id = 1; 
-
-create table sensores (
+CREATE TABLE Sensores (
 idSensor int primary key auto_increment,
+idReservatorio int not null,
+idUsuario int not null,
 tipoSensor varchar(50) not null,
-localizacaoSensor varchar(100) not null,
+posicaoSensor varchar(100) not null,
 alcanceSensor decimal(3,2) not null,
-dataInstalacao date not null,
-statusSensor varchar(30) not null
+dataDaInstalacao date not null,
+statusSensor varchar(30) not null,
+FOREIGN KEY (idReservatorio) REFERENCES Reservatorio(idReservatorio),
+FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
-select * from sensores;
-describe sensores;
+CREATE TABLE Configuracoes (
+idConfiguracao int primary key auto_increment not null,
+idReservatorio int not null,
+nomeConfiguracao varchar(100) not null,
+valorMaximoAgua decimal (3,2)not null,
+descricao varchar(150)not null,
+FOREIGN KEY (idReservatorio) REFERENCES Reservatorio(idReservatorio)
+);
 
-alter table sensores add constraint checkStatus check (statusSensor in ('Ativo', 'Inativo'));
-
-insert into sensores (tipoSensor, localizacaoSensor, alcanceSensor, dataInstalacao, statusSensor) values
-('Sensor Ultrassônico', 'Tampa do Reservatório', 4.00, '2024-08-28', 'Ativo');
-
-insert into sensores (tipoSensor, localizacaoSensor, alcanceSensor, dataInstalacao, statusSensor) values
-('Sensor Ultrassônico', 'Topo do Reservatório', 4.00, '2024-08-28', 'Ativo');
-
-create table leituraAgua (
+CREATE TABLE Leitura (
 idLeitura int primary key auto_increment not null,
 idSensor int not null,
 distanciaMedida decimal (3,2) not null,
 nivelAgua decimal(3,2) not null,
-volumeAguaLT decimal(7,2) not null,
-dataHoraLeitura date not null,
-statusReservatorio varchar(30) not null
+volumeAguaLitros decimal(7,2) not null,
+dataLeitura date not null,
+statusReservatorio enum('Normal','Cuidado', 'Crítico') not null
 );
 
-select * from leituraAgua;
-describe leituraAgua;
-
-alter table leituraAgua add constraint fk_idSensor foreign key (idSensor) references sensores(idSensor);
-
-show create table leituraAgua;
-
-alter table leituraAgua change column dataHoraLeitura dataLeitura date;
-
-alter table leituraAgua add constraint checkStatusReservatorio check (statusReservatorio in ('Normal', 'Alerta', 'Crítico'));
-
-insert into leituraAgua (idSensor, distanciaMedida, nivelAgua, volumeAguaLT, dataLeitura, statusReservatorio) values
-(1, 3.00, 5.00, 50000.00, 20240828, 'Normal');
-
-insert into leituraAgua (idSensor, distanciaMedida, nivelAgua, volumeAguaLT, dataLeitura, statusReservatorio) values
-(2, 3.00, 5.00, 50000.00, 20240828, 'Normal');
-
-insert into leituraAgua (idSensor, distanciaMedida, nivelAgua, volumeAguaLT, dataLeitura, statusReservatorio) values
-(1, 1.00, 7.00, 70000.00, 20240829, 'Crítico'),
-(2, 1.00, 7.00, 70000.00, 20240829, 'Crítico'),
-(1, 2.10, 5.90, 49000.00, 20240830, 'Alerta'),
-(2, 2.10, 5.90, 49000.00, 20240830, 'Alerta');
-
-create table alertas (
+CREATE TABLE Alertas (
 idAlerta int primary key auto_increment,
 idLeitura int not null,
-dataAlerta date not null,
+dataDoAlerta date not null,
 tipoAlerta varchar (100) not null,
-descricaoAlerta TEXT,
-foreign key (idLeitura) references leituraAgua (idLeitura)
+descricaoAlerta varchar(150) not null,
+foreign key (idLeitura) references Leitura (idLeitura)
 );
 
-select * from alertas;
-describe alertas;
+-- prenchendo dados nas tabelas 
 
-insert into alertas (idLeitura, dataAlerta, tipoAlerta, descricaoAlerta) values
-(1, 20240828, 'Análise: Nível Normal', 'O nível da água está dentro do normal; nenhuma ação necessária.'),
-(3, 20240829, 'Análise: Nível Crítico', 'O nível da água está fora dos limites seguros; ação imediata necessária!'),
-(5, 20240830, 'Análise: Nível Alerta', 'O nível da água está próximo ao limite; monitorar com atenção.');
+INSERT INTO Usuario VALUES
+(default, 1,  'Eduarda', 'dudadias@gmail.com', 'SenhaSuperSegura124', 'Administrador', '2024-09-03'),
+(default, 1,  'Victor', 'vitugo@gmail.com', 'SenhaSuperSegura125', 'Administrador', '2024-09-04'),
+(default, 1,  'Pedro', 'pemendonca@gmail.com', 'SenhaSuperSegura126', 'Administrador', '2024-09-04'),
+(default, 1,  'Nicolly', 'nicksousa@gmail.com', 'SenhaSuperSegura127', 'Administrador', '2024-09-05'),
+(default, 1,  'Thais', 'fosaluza@gmail.com', 'SenhaSuperSegura128', 'Administrador', '2024-09-05');
 
-create table configuracoesSistema (
-idConfiguracao int primary key auto_increment not null,
-nomeConfiguracao varchar(100) not null,
-valorMaximoAgua decimal (3,2)not null,
-descricaoValor TEXT
-);
+INSERT INTO Empresa VALUES
+(default, 'Daryo', 12345678912345, 'Rua Daryo Fazenda Feliz N°01', 11959506544, 'daryo@empresa.com', '20240903');
 
-select * from configuracoesSistema;
+INSERT INTO Reservatorio VALUES
+(default, 1, 'Fazenda Daryo', 80.000, 8.00, 4.00);
 
-insert into configuracoesSistema (nomeConfiguracao, valorMaximoAgua, descricaoValor) values
-('Limite: Nível Muito Alto', 7.00, 'Limite máximo do nível da água em metros'),
-('Limite: Nível Muito Baixo', 1.00, 'Limite mínimo do nível da água em metros'),
-('Intervalo entre Medições', 5.00, 'Tempo de intervalo entre as medições em minutos');
+INSERT INTO Sensores VALUES
+(default, 1, 1, 'Sensor Ultrassônico', 'Tampa do Reservatório', 4.00, '2024-08-28', 'Ativo'),
+(default, 1, 2, 'Sensor Ultrassônico', 'Topo do Reservatório', 4.00, '2024-08-28', 'Ativo');
 
-show tables;
+INSERT INTO Configuracoes VALUES
+(default, 1, 'Limite: Nível Muito Alto', 7.00, 'Limite máximo do nível da água em metros'),
+(default, 1, 'Limite: Nível Muito Baixo', 1.00, 'Limite mínimo do nível da água em metros'),
+(default, 1, 'Intervalo entre Medições', 5.00, 'Tempo de intervalo entre as medições em minutos');
+select * from leitura;
+INSERT INTO Leitura VALUES
+(default, 1, 3.00, 5.00, 50000.00, 20240828, 'Normal'),
+(default, 2, 1.00, 7.00, 70000.00, 20240829, 'Crítico'),
+(default, 1, 2.10, 5.90, 49000.00, 20240830, 'Cuidado');
 
-select * from reservatorio;
-select * from sensores;
-select * from leituraAgua;
-select * from alertas;
-select * from configuracoesSistema;
-
+SELECT * FROM ALERTAS;
+INSERT INTO Alertas values
+(default, 4, 20240828, 'Análise Nível: Normal', 'O nível da água está dentro do normal; nenhuma ação necessária.'),
+(default, 5, 20240829, 'Análise Nível: Cuidado', 'O nível da água está fora dos limites seguros; ação imediata necessária!'),
+(default, 6, 20240830, 'Análise Nível: Alerta', 'O nível da água está próximo ao limite; monitorar com atenção.');
 
 
