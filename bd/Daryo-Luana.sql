@@ -1,6 +1,9 @@
 CREATE DATABASE DaryoEmpresa;
 USE DaryoEmpresa;
 
+
+SELECT * FROM Usuario;
+
 CREATE TABLE Usuario(
 idUsuario int primary key auto_increment,
 idEmpresa int,
@@ -10,7 +13,8 @@ senhaUsuario varchar(255) not null unique,
 tipoUsuario enum('Cliente','Administrador') not null,
 dataDoCadastro date not null
 );
-SELECT * FROM USUARIO;
+
+SELECT * FROM Empresa;
 
 CREATE TABLE Empresa(
 idEmpresa int primary key auto_increment,
@@ -22,6 +26,8 @@ emailEmpresa varchar(100)not null,
 dataDoCadastro date not null
 );
 
+SELECT * FROM Reservatorio;
+
 CREATE TABLE Reservatorio (
 idReservatorio int primary key auto_increment,
 idSensor int not null,
@@ -30,6 +36,8 @@ capacidadeMaxLitros decimal(7,2)not null,
 altura decimal(3,2)not null,
 diametro decimal(3,2)not null
 );
+
+SELECT * FROM Sensores;
 
 CREATE TABLE Sensores (
 idSensor int primary key auto_increment,
@@ -44,6 +52,8 @@ FOREIGN KEY (idReservatorio) REFERENCES Reservatorio(idReservatorio),
 FOREIGN KEY (idUsuario) REFERENCES Usuario(idUsuario)
 );
 
+SELECT * FROM Configuracoes;
+
 CREATE TABLE Configuracoes (
 idConfiguracao int primary key auto_increment not null,
 idReservatorio int not null,
@@ -52,6 +62,8 @@ valorMaximoAgua decimal (3,2)not null,
 descricao varchar(150)not null,
 FOREIGN KEY (idReservatorio) REFERENCES Reservatorio(idReservatorio)
 );
+
+SELECT * FROM Leitura;
 
 CREATE TABLE Leitura (
 idLeitura int primary key auto_increment not null,
@@ -62,6 +74,8 @@ volumeAguaLitros decimal(7,2) not null,
 dataLeitura date not null,
 statusReservatorio enum('Normal','Cuidado', 'Crítico') not null
 );
+
+SELECT * FROM Alertas;
 
 CREATE TABLE Alertas (
 idAlerta int primary key auto_increment,
@@ -106,5 +120,14 @@ INSERT INTO Alertas values
 (default, 4, 20240828, 'Análise Nível: Normal', 'O nível da água está dentro do normal; nenhuma ação necessária.'),
 (default, 5, 20240829, 'Análise Nível: Cuidado', 'O nível da água está fora dos limites seguros; ação imediata necessária!'),
 (default, 6, 20240830, 'Análise Nível: Alerta', 'O nível da água está próximo ao limite; monitorar com atenção.');
+
+SHOW TABLES;
+SELECT * FROM Usuario;
+SELECT * FROM Empresa;
+SELECT * FROM Configuracoes;
+SELECT * FROM Reservatorio;
+SELECT * FROM Sensores;
+SELECT * FROM Leitura;
+SELECT * FROM Alertas;
 
 
