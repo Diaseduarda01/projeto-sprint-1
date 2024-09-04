@@ -1,0 +1,21 @@
+ctrl + c -- interrompe um comando em processo ($)
+git pull -- puxa as alterações
+git add -- adicionar as alterações
+git commit -m 'mensagem'
+git push -- envia
+
+git status -- a qualquer momento
+
+fazer login ( git config --global user. name + nomegithub / user. email + emailsptech ENTER
+
+GIT CLONE LINK DO GITHUB
+
+> git clone + link do GitHub
+> git status
+> git add
+> git status
+> git commit - m "TEXTO AQUI COM A DESCRIÇAO"
+> git log = ver o histórico
+> git pull
+> git push
+
