@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora Lucro Hidraulíco</title>
+    <link rel="icon" href="imgs/logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-image">
+            <img src="imgs/a.jpg">
+        </div>
+            <div id="div_exibir" class="form">
+                <form action="#">
+                    <div class="form-header">
+                        <div class="title">
+                            <h1>Calculadora Daryo</h1>
+                        </div>   
+                    </div>
+                        <div class="input-group">
+                            <div class="input-box">
+                                <label for="input_investimento">Investimento Projeto</label>
+                                <input id="input_investimento" placeholder="Quanto deseja investir" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="input_tamanho-reservatório">Tamanho Reservatório</label>
+                                <input id="input_tamanho_reservatório" placeholder="Capacidade de armazenamento" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="input_custo_manutencao">Valor Manutenção</label>
+                                <input id="input_custo_manutencao" placeholder="O valor da manutenção" required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="input_valor_litro">Valor da Água</label>
+                                <input id="input_valor_litro" placeholder="O custo atual da água em (R$/m³) " required>
+                            </div>
+
+                            <div class="input-box">
+                                <label for="input_investimento_anos">Investimento</label>
+                                <input id="input_investimento_anos" type="number"placeholder="Quantos anos deseja investir?" required>
+                            </div>
+
+                            <div class="login-button">
+                                <button onclick="calcularROI()">
+                                <a href="#">Calcular Lucro</a>
+                                </button>
+                            </div>
+                        </div>                
+                    </form>
+                </div>
+            </div>
+        </body>
+        <script src="index.js"></script>
+        <!-- <div id="div_exibir"></div -->
+    </html>
+
+
+ 
