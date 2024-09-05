@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+
+<body>
+    <center>
+        <h1>Daryo</h1>
+        <h2>Simulando o quanto seu negócio se beneficiará com o projeto Daryo!</h2>
+
+        Insira aqui seu gasto anual de operação e paradas emergenciais por falta de água<br>
+        <input type="number" id=gasto_anual><br>
+
+        Insira aqui o valor da água (m³)<br>
+        <input type="number" id=valor_agua><br>
+
+        Insira aqui a quantidade de água consumida por ano (m³)<br>
+        <input type="number" id=agua_consumida><br>
+
+        Insira aqui a quantidade de reservatórios de água<br>
+        <input type="number" id=qtd_reservatorios><br><br>
+
+        <button onclick="calcularReducao()">Simular</button><br><br>
+
+        <div id="resultadodaryo"></div>
+
+    </center>
+</body>
+
+</html>
+
+<script>
+    function calcularReducao() {
+        const gastoOperacoesManutencoesParadas = Number(gasto_anual.value)
+        const valorAgua = Number(valor_agua.value)
+        const qtdAguaConsumida = Number(agua_consumida.value)
+        const qtdReservatorios = Number(qtd_reservatorios.value)
+
+        const custoPorSensor = 10
+        const sensorPorReservatorio = 2
+
+        const numeroDeSensores = qtdReservatorios * sensorPorReservatorio
+        const custoFinalSensores = numeroDeSensores * custoPorSensor
+
+        const custoTotalAtual = (valorAgua * qtdAguaConsumida) + gastoOperacoesManutencoesParadas
+        const reducaoCustos = custoTotalAtual * 0.30
+        const custoTotalAposReducao = custoTotalAtual - reducaoCustos
+
+
+        const lucroTotal = reducaoCustos - custoFinalSensores
+
+        const custoServicoDaryo = lucroTotal * 0.15
+
+        resultadodaryo.innerHTML = `
+        <p>Atualmente, sem nossos serviços, seu gasto total é de: <b>R$${custoTotalAtual}</b>.</p>
+        <p>Com a Daryo, você reduzirá esse valor para <b>R$${custoTotalAposReducao.toFixed(2)}</b>!</p>
+        <p>Isso representa uma economia de <b>R$${reducaoCustos.toFixed(2)}</b>, equivalente a 30% do valor total.</p>
+        <p>Mesmo considerando o custo dos nossos sensores, você ainda terá um lucro de <b>R$${lucroTotal.toFixed(2)}</b>!</p>
+        <p>Além disso, a taxa pelos nossos serviços é de <b>R$${custoServicoDaryo.toFixed(2)}</b>, correspondendo a apenas 15% do seu lucro total.</p>
+        <p>O projeto <b>Daryo</b> utiliza dois sensores ultrassônicos (HC-SR04) para medir com precisão o nível da água do(s) seu(s) reservatório(s). Os sensores são posicionados da seguinte forma:</p>
+        
+        1. Um no topo do tanque. <br>
+        2. Outro em uma superfície dura, fisicamente (uma tampa que flutua sob a água do reservatório).<br>
+        
+        <p>Com os dados coletados pelos sensores, o produtor agrícola pode iniciar ações
+        preventivas que resultarão em uma redução de custos de 30%, <br>
+        conforme calculado em um estudo conduzido por Pravat Kumar Shit,<br>
+        professor indiano que publicou o artigo científico intitulado <i>"Gestão Resiliente
+        e Sustentável do Armazenamento de Água na Agricultura"</i> na <i>SpringerLink</i>.</p>
+        `
+    }
+
+</script>
