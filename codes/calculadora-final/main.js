@@ -31,8 +31,8 @@ function calcularROI() {
     // Calcular o custo acumulado ao longo dos anos
     const custoAcumulado = custoManutencao * anos;
 
-    // Calcular o ROI acumulado
-    const roiAcumulado = ((ganhoAcumulado - custoAcumulado) / custoAcumulado) * 100;
+    // Calcular o retorno esperado durante os anos
+    const RetornoAcumulado = ((ganhoAcumulado - custoAcumulado) / custoAcumulado) * 100;
 
     // Exibir os resultados
     div_exibir.innerHTML = `
@@ -41,7 +41,7 @@ function calcularROI() {
         <p>O ganho obtido com a economia de água por ano é: R$ ${ganhoObtidoAnual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
         <p>O ganho acumulado em ${anos} anos é: R$ ${ganhoAcumulado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
         <p>O custo acumulado em ${anos} anos é: R$ ${custoAcumulado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-        <p>O ROI acumulado após ${anos} anos é: ${roiAcumulado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
+        <p>O ROI acumulado após ${anos} anos é: ${RetornoAcumulado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
     `;
 }
                            

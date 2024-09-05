@@ -1,41 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulção de ROI</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulção de ROI</title>
 </head>
+
 <body>
-    <div class="div_card" id="div_exibir" >
-        <h1>Simulador de ROI</h1>
-        <p>Etapa 1: Insira a capacidade do reservatório:
-            <input id="input_capacidade" placeholder="Ex: 1000 m³"><br>
-        <p> Etapa 2: Insira quanto deseja investir:
-            <input id="input_valor_investimento" placeholder="Ex: R$ 5000"><br>
-        <p>Etapa 3: Insira os custos de manutenção anuais:
-            <input id="input_custo_manutencao" placeholder="Ex: R$ 200"><br>
-        <p>Etapa 4: Insira o custo atual da água (R$/m³):
-            <input id="input_valor_agua" placeholder="Ex: R$ 3"><br>
-        <p>Etapa 5: Insira por quanto tempo deseja investir (Em anos):
-            <input id="input_investimento_anos" type="number" placeholder="Ex: 5">
-        </p><br>
-        <button class="cssbuttons-io-button" onclick="calcularROI();">
-            Calcular
-            <!-- <div class="icon">
-              <svg
-                height="24"
-                width="24"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M0 0h24v24H0z" fill="none"></path>
-                <path
-                  d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                  fill="currentColor"
-                ></path>
-              </svg>
-            </div> -->
-          </button>
-          <script src="main.js"></script>
+  <div class="div_card" id="div_exibir">
+    <h1>Simulador de ROI</h1>
+    <p>Etapa 1: Insira a capacidade do reservatório:
+      <input id="input_capacidade" placeholder="Ex: 1000 m³"><br>
+    <p> Etapa 2: Insira quanto deseja investir:
+      <input id="input_valor_investimento" placeholder="Ex: R$ 5000"><br>
+    <p>Etapa 3: Insira os custos de manutenção anuais:
+      <input id="input_custo_manutencao" placeholder="Ex: R$ 200"><br>
+    <p>Etapa 4: Insira o custo atual da água (R$/m³):
+      <input id="input_valor_agua" placeholder="Ex: R$ 3"><br>
+    <p>Etapa 5: Insira por quanto tempo deseja investir (Em anos):
+      <input id="input_investimento_anos" type="number" placeholder="Ex: 5">
+    </p><br>
+    <button class="cssbuttons-io-button" onclick="calcularROI();">
+      Calcular
+    </button>
+    <script src="main.js"></script>
 </body>
+
 </html>
