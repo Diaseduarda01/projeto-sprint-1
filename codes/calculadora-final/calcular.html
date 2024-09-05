@@ -5,10 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador Financeiro </title>
+  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
 </head>
 
 <body>
-  <div class="div_card" id="div_exibir">
+  <div id="div_exibir">
     <center>
       <h1>Daryo</h1>
       <h2>Simulando seu retorno financeiro com nossa empresa</h2>
@@ -18,7 +19,7 @@
         <input id="input_capacidade" placeholder="Ex: 1000 m³" required><br>
 
       <p>Etapa 2: Insira o tipo do reservatório:
-        <input id="input_tipo " placeholder="Ex: Cilindro" required><br>
+        <input id="input_tipo" type="text" placeholder="Ex: cilindro" required><br>
 
       <p> Etapa:3 Insira quanto deseja investir:
         <input id="input_valor_investimento" placeholder="Ex: R$ 50000" required><br>
@@ -34,7 +35,9 @@
 
       </p><br>
 
-      <button class="cssbuttons-io-button" onclick="calcularRetorno();">
+
+
+      <button onclick="calcularRetorno()">
         Calcular
       </button>
     </center>
