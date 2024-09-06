@@ -11,13 +11,13 @@ function calcularRetorno() {
 
     // Define a redução percentual com base no valor do investimento
     if (investimento <= 10000) {
-        reducaoPercentual = 0.80; // 20% de redução
+        reducaoPercentual = 0.20; // 20% de redução
     } else if (investimento <= 20000) {
-        reducaoPercentual = 0.75; // 25% de redução
+        reducaoPercentual = 0.25; // 25% de redução
     } else if (investimento <= 30000) {
-        reducaoPercentual = 0.65; // 35% de redução
+        reducaoPercentual = 0.35; // 35% de redução
     } else if (investimento <= 50000) {
-        reducaoPercentual = 0.60; // 40% de redução
+        reducaoPercentual = 0.40; // 40% de redução
     } else {
         reducaoPercentual = 0.50; // 50% de redução
     }
@@ -111,8 +111,9 @@ function calcularRetorno() {
     var ganhoAcumulado = (ganhoObtidoAnual * anos);
 
     // Calcular o custo acumulado de manutenção ao longo dos anos
-    var custoAcumulado = (custoManutencao * anos) * reducaoPercentual;
-
+    var custoAcumulado = custoManutencao * anos ;
+    custoAcumulado = custoAcumulado -(custoAcumulado * reducaoPercentual)
+    
     // Calcular o retorno esperado durante os anos, levando em consideração o investimento
     var RetornoAcumulado = (investimento - ganhoAcumulado - custoAcumulado) / investimento * 100;
 
