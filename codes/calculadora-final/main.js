@@ -47,7 +47,7 @@ function calcularRetorno() {
     }
 
     // Determina a quantidade de sensores com base na altura do reservatório
-    if (altura <= 4) {
+    if (altura <= 4) {  
         numeroSensores = 1; // Um sensor para até 4 metros
     } else if (altura <= 8) {
         numeroSensores = 2; // Dois sensores para entre 4 e 8 metros
@@ -113,7 +113,7 @@ function calcularRetorno() {
     // Calcular o custo acumulado de manutenção ao longo dos anos
     var custoAcumulado = custoManutencao * anos ;
     custoAcumulado = custoAcumulado -(custoAcumulado * reducaoPercentual)
-    
+
     // Calcular o retorno esperado durante os anos, levando em consideração o investimento
     var RetornoAcumulado = (investimento - ganhoAcumulado - custoAcumulado) / investimento * 100;
 

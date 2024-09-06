@@ -5,33 +5,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulador Financeiro </title>
-  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="img/logo-colorida-redonda.png" type="image/x-icon">
+  <style>
+    * {
+      background-color: #E6E6E6;
+    }
+
+    .input {
+      background-color: white;
+      color: black;
+      /* Define a cor do texto dentro da caixinha */
+      border: 1px solid #ccc;
+      /* Define a borda da caixinha */
+    }
+  </style>
 </head>
 
 <body>
   <div id="div_exibir">
     <center>
-      <h1>Daryo</h1>
+      <img src="img/logo-colorida-daryo.png" style=" width: 300px; height: 300px;">
+      <!-- <h1>Daryo</h1> -->
       <h2>Simulando seu retorno financeiro com nossa empresa</h2>
 
-
-      <p>Etapa 1: Insira a capacidade do reservatório:
-        <input id="input_capacidade" placeholder="Ex: 1000 m³" required><br>
+      <br>
+      <p>Etapa 1: Insira a capacidade do reservatório em m³:
+        <input class="input" id="input_capacidade" placeholder="Ex: 1000 m³" required><br>
 
       <p>Etapa 2: Insira o tipo do reservatório:
-        <input id="input_tipo" type="text" placeholder="Ex: cilindro" required><br>
+        <input class="input" id="input_tipo" type="text" placeholder="Ex: cilindro" required><br>
 
-      <p> Etapa:3 Insira quanto deseja investir:
-        <input id="input_valor_investimento" placeholder="Ex: R$ 50000" required><br>
+      <p> Etapa:3 Insira quanto deseja investir no projeto:
+        <input class="input" id="input_valor_investimento" placeholder="Ex: R$ 50000" required><br>
 
       <p>Etapa 4: Insira os custos de manutenção anuais:
-        <input id="input_custo_manutencao" placeholder="Ex: R$ 200" required><br>
+        <input  class="input" id="input_custo_manutencao" placeholder="Ex: R$ 200" required><br>
 
       <p>Etapa 5: Insira o custo atual da água (R$/m³):
-        <input id="input_valor_agua" placeholder="Ex: R$ 3" required><br>
+        <input class="input" id="input_valor_agua" placeholder="Ex: R$ 3" required><br>
 
       <p>Etapa 6: Insira por quanto tempo deseja investir (Em anos):
-        <input id="input_investimento_anos" type="number" placeholder="Ex: 5" required>
+        <input class="input" id="input_investimento_anos" type="number" placeholder="Ex: 5" required>
 
       </p><br>
 
