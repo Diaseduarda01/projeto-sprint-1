@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simulador Financeiro Daryo</h1>
+    Informe o seu nome:
+    <input type="text" id="input_nome_cliente"><br>
+    Qual plano de investimento sua empresa pretende adquirir? (básico, médio, avançado)
+    <input type="text" id="input_plano"><br>
+    Qual o tipo de reservatório sua empresa utiliza? 
+    <input type="text" id="input_tipo_reservatório"><br>
+    Quantos reservatórios sua empresa possui?
+    <input type="number" id="input_qtd_reservatório"><br>
+
+    <button onclick="CalcularInvestimento()">
+        Calcular Investimento
+    </button>
+
+    <div id="div_NomeCliente"></div>
+    <div id="div_ResultadoPlano"></div>
+    <div id="div_ResultadoEficiencia"></div>
+</body>
+</html>
+
+<script>
+    function CalcularInvestimento() {
+        const NomeCliente = (input_nome_cliente.value)
+        const PlanoInvestimento = (input_plano.value)
+        const TipoReservatório = (input_tipo_reservatório.value)
+        const QtdReservatórios = Number (input_qtd_reservatório.value)
+
+        var InvestimentoMensal = 0
+        var PorcentagemEficiencia = 0
+
+        if (PlanoInvestimento == 'básico') {
+            InvestimentoMensal = 500 
+            if (QtdReservatórios <= 2) {PorcentagemEficiencia = 25}
+            else if (QtdReservatórios <= 6) {PorcentagemEficiencia = 15}
+            else {PorcentagemEficiencia = 10}
+
+        } else if (PlanoInvestimento == 'médio') {
+            InvestimentoMensal = 1500
+            if (QtdReservatórios <= 2) {PorcentagemEficiencia = 45}
+            else if (QtdReservatórios <= 6) {PorcentagemEficiencia = 35}
+            else {PorcentagemEficiencia = 30}
+
+        } else if (PlanoInvestimento == 'avançado') {
+            InvestimentoMensal = 2500
+            if (QtdReservatórios <= 2) {PorcentagemEficiencia = 65}
+            else if (QtdReservatórios <= 6) {PorcentagemEficiencia = 55}
+            else {PorcentagemEficiencia = 50}
+        }
+
+        var InvestimentoAnual = InvestimentoMensal * 12
+
+        div_NomeCliente.innerHTML = `Olá ${NomeCliente}!`
+        div_ResultadoPlano.innerHTML = `Com o plano ${PlanoInvestimento} sua empresa teria um investimento mensal de R$${InvestimentoMensal} e anual de R$${InvestimentoAnual}.`
+        div_ResultadoEficiencia.innerHTML = `Com a utilização de ${QtdReservatórios} reservatório(s), a eficiência do controle com o uso do projeto seria de ${PorcentagemEficiencia}% a mais em 1 ano.`
+
+    }
+</script>
