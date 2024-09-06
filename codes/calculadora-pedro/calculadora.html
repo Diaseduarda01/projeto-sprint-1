@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daryo</title>
+</head>
+
+<body>
+    <h1>Simulação Daryo</h1>
+
+    Capacidade total do reservatório:
+    <input id="input_total_reservatorio"><br>
+
+    Custo mensal de manutenção do reservatório:
+    <input id="input_custo_manutencao_mensal"><br>
+
+    Quantidade média de água usada mensalmente:
+    <input id="input_media_mensal"><br>
+
+    Valor médio pago por litro de água:
+    <input id="input_valor_litro"><br>
+
+    Valor de venda por litro de água:
+    <input id="input_venda_litro"><br>
+
+    Quantidade de água perdida:
+    <input id="input_percentual_perda">
+
+    <button onclick="simulacao()">Simulação</button><br>
+
+    <div id="div_simulacao"></div>
+
+</body>
+
+</html>
+
+<script>
+    function simulacao() {
+        const capacidadeReservatorio = Number(input_total_reservatorio.value)
+        const manutencaoReservatorio = Number(input_custo_manutencao_mensal.value)
+        const qtdAguaUsada = Number(input_media_mensal.value)
+        const valorLitro = Number(input_valor_litro.value)
+        const vendaLitro = Number(input_venda_litro.value)
+        const perda = Number(input_percentual_perda.value)
+
+        div_simulacao.innerHTML = ``
+
+        // Percentual de perda
+        var perdaPercentual = (qtdAguaUsada - perda) / 100
+        var perdaTotal = qtdAguaUsada - perda
+
+        // custo com a água usada mensamente
+        var custoAgua = perdaTotal * valorLitro
+
+        // custo mensal
+        var custoTotal = manutencaoReservatorio + custoAgua
+
+        // Receita mensal 
+        var receita = perdaTotal * vendaLitro
+
+        // Lucro mensal 
+        var lucro = receita - custoTotal / 100
+
+        div_simulacao.innerHTML += `custo com a água usada mensamente: R$${custoAgua} Litros <br>`
+        div_simulacao.innerHTML += `percentual de água perdida ${perdaPercentual}% <br>`
+        div_simulacao.innerHTML += `custo mensal: R$${custoTotal} <br>`
+        div_simulacao.innerHTML += `Receita mensal: R$${receita} <br>`
+        div_simulacao.innerHTML += `Lucro mensal: R$${lucro}% <br>`
+    }
+</script>
