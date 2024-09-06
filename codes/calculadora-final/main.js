@@ -102,9 +102,11 @@ function calcularRetorno() {
         alert("Altura do reservatório excede o limite máximo de 100 metros.");
         return; // Sai da função se a altura for excessiva
     }
+
+
     
     // Calcular o volume de água economizado anualmente
-    var volumeAguaEconomizadoAnualmente = capacidade * reducaoPercentual;
+    var volumeAguaEconomizadoAnualmente = capacidade * reducaoPercentual
     var ganhoObtidoAnual = volumeAguaEconomizadoAnualmente * valorAgua; // Ganho anual com a economia de água
 
     // Calcular o ganho acumulado ao longo dos anos
