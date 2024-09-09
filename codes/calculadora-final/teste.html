@@ -1,0 +1,63 @@
+div_exibir.innerHTML = `
+    <center>
+        <h2>Resultados da Simulação</h2>
+
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li>
+                <p><b>O volume de água economizado por ano é:</b> 
+                    <b>${volumeAguaEconomizadoAnualmente.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} m³</b>.
+                    <br>Estudos realizados por <i><a href="https://link.springer.com/article/10.1007/s11356-024-34003-4#citeas" target="_blank">Pravat Kumar Shit</a></i> indicam que a economia de até 50% ao evitar desperdícios pode ser alcançada com o sistema proposto.
+                </p>
+            </li>
+            Estudos realizados por Pravat Kumar Shit indicam que sistemas de controle de água 
+            como o proposto podem reduzir até 50% de perdas em áreas agrícolas, resultando em economia significativa.
+            <li>
+                <p><b>O ganho obtido com a economia de água por ano é:</b> 
+                    <b>R$ ${ganhoObtidoAnual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b>.
+                    <br>Essa economia reflete uma gestão eficiente dos recursos hídricos.
+                </p>
+            </li>
+
+            <li>
+                <p><b>O ganho acumulado em ${anos} anos é:</b> 
+                    <b>R$ ${ganhoAcumulado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b>.
+                </p>
+            </li>
+
+            <li>
+                <p><b>O custo evitado em ${anos} anos é:</b> 
+                    <b>R$ ${custoEvitado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b>.
+                    <br>Este valor reflete a economia total ao evitar o consumo excessivo de água.
+                </p>
+            </li>
+
+            <li>
+                <p><b>O retorno acumulado após ${anos} anos é:</b> 
+                    <b>${RetornoAcumulado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</b>.
+                </p>
+            </li>
+
+            <li>
+                <p><b>O tempo de retorno (Payback) do investimento é:</b> 
+                    <b>${payback.toFixed(2)} anos</b>.
+                </p>
+            </li>
+
+            <li>
+                <p><b>Impacto ambiental:</b> 
+                    A economia de água obtida equivale a <b>${(volumeAguaEconomizadoAnualmente / 2500).toFixed(2)}</b> piscinas olímpicas por ano.
+                </p>
+            </li>
+
+            <li>
+                <p><b>Análise de Sensibilidade:</b> 
+                    Em um cenário otimista, com uma redução de 50%, o retorno pode aumentar em X%. Em um cenário conservador, com uma redução de 20%, a economia ainda seria de <b>${(capacidade * 0.20 * valorAgua).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} m³</b>.
+                </p>
+            </li>
+
+            <li>
+                <p>O projeto <b>Daryo</b> utilizará <b>${numeroSensores}</b> sensores ultrassônicos no seu reservatório de altura <b>${altura.toFixed(0)}</b>, para monitorar com precisão os níveis de água.</p>
+            </li>
+        </ul>
+    </center>
+`;
