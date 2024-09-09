@@ -1,0 +1,20 @@
+Explicação do Banco de Dados: Daryo
+
+O banco de dados da nossa empresa conta com 7 tabelas no MySQL, projetadas para organizar e apresentar os dados de maneira clara e estruturada.
+
+As tabelas são:
+Tabela de Usuário: Armazena todos os dados que o usuário insere durante o cadastro, como login, senha e contato (telefone). Também define diferentes níveis de acesso: Administrador e Usuário Comum, garantindo que tanto os funcionários da Daryo quanto os agricultores possam acessar o sistema para receber atualizações e informações sobre nossos serviços.
+
+Tabela de Empresa: Contém os dados essenciais para identificar uma instituição, como o CNPJ e a data de cadastro empresarial.
+
+Tabela de Reservatórios: Registra informações importantes sobre os reservatórios dos clientes, como altura, diâmetro e capacidade máxima, para diferenciar entre diferentes tanques.
+
+Tabela de Sensores: Descreve as informações de cada sensor usado pelos clientes, identificando-o pelo ID, nome, posição de instalação no tanque e seu status, que indica se está ativo ou inativo em tempo real.
+
+Tabela de Configurações de Limiares/Limites: Define dois limiares críticos para o nível de água de um reservatório, usando como referência uma distância de 1 metro, seja da borda ou do fundo do reservatório.
+
+Tabela de Leitura da Água: Coleta os dados das medições feitas pelos sensores. Informa a distância da água até a borda, o nível em metros, o volume de água e a data da leitura. Também identifica o status do reservatório: Normal, Vigilante ou Crítico.
+
+Tabela de Alertas: Armazena os alertas gerados de acordo com as leituras de água. Os alertas são enviados aos usuários cadastrados quando o status do reservatório muda para Vigilante ou Crítico.
+
+Com essas tabelas conseguimos organizar de forma eficiente as informações necessárias para o gerenciamento dos reservatórios de água.
