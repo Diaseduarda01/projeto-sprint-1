@@ -1,0 +1,134 @@
+CREATE DATABASE DaryoTM;
+USE DaryoTM;
+
+CREATE TABLE Usuario(
+idUsuario int primary key auto_increment,
+nomeUsuario varchar(25) NOT NULL,
+emailUsuario varchar(60),
+loginUsuario varchar(20) NOT NULL UNIQUE,
+senhaUsuario varchar(8)not null,
+telefoneUsuario varchar(15)not null,
+nivelAcesso varchar(50) not null, constraint chkNivel check (nivelAcesso in ('Administrador', 'Usuário Comum'))
+);
+
+SELECT * FROM Usuario
+
+INSERT INTO Usuario VALUES
+(default, 'Clara Silva', 'clarasilva@sptech.school', 'clarasilva95', '13579@Cs', '11912345678', 'Administrador'),
+(default, 'Felipe Alves', 'felipealves@sptech.school', 'felipealves01', '0987#Fa', '11919386582', 'Usuário Comum');
+
+
+
+CREATE TABLE Empresa(
+idEmpresa int primary key auto_increment,
+nomeEmpresa varchar(100) not null,
+cnpjEmpresa varchar(14) not null unique,
+enderecoEmpresa varchar(100)not null,
+telefoneEmpresa varchar(15)not null,
+emailEmpresa varchar(100)not null,
+dataDoCadastro date not null
+);
+
+SELECT * FROM Empresa
+
+INSERT INTO Empresa VALUES
+(default, 'Fazenda Nascente do Sol', '12345678000195', 'Avenida das Hortências, N° 45', '1112233344', 'contatonascente@sptech.school', '2024-01-15'),
+(default, 'Fazenda Reserva Hídrica', '98765432000156', 'Estrada do Sertão, N° 200', '2223344556', 'infohidrica@sptech.school', '2023-11-22'),
+(default, 'Fazenda Rio Sereno', '19283746000162', 'Rua do Rio, N° 78', '3334455667', 'riosereno@sptech.school', '2024-03-09'),
+(default, 'Fazenda Campos Verdes', '56473829000180', 'Rodovia Verde, N° 120', '4445566778', 'fazendacampos@sptech.school', '2024-05-30');
+
+
+
+CREATE TABLE Reservatorios(
+idReservatorio int primary key auto_increment,
+nomeReservatorio varchar (50), 
+localReservatorio  varchar (50),
+capacidadeMaxLitros float,
+altura float,
+diametro float, 
+);
+
+SELECT * FROM Reservatorios
+
+INSERT INTO Reservatorios VALUES
+(default, 'Reservatório Leste', 'Fazenda Nascente do Sol', 80.000, 8.00, 4.00),
+(default, 'Reservatório Oeste', 'Fazenda Nascente do Sol', 40.000, 4.00, 2.00),
+(default, 'Reservatório Norte', 'Fazenda Rio Sereno', 90.000, 9.00, 4.50),
+(default, 'Reservatório Sul', 'Fazenda Rio Sereno', , 20.000, 2.00, 1.00);
+
+
+
+CREATE TABLE Sensores(
+idSensor int primary key auto_increment,
+tipoSensor varchar(50) not null,
+nomeSensor varchar (30) not null,
+posicaoDoSensor varchar(100) not null,
+alcanceSensor float not null, 
+dataDaInstalacao date not null,
+statusSensor varchar(30) not null,
+);
+
+SELECT * FROM Sensores
+
+INSERT INTO Sensores VALUES
+(default, 'Sensor Ultrassônico', 'HC-SR04', 'Topo', '4.00', '2024-02-20', 'Ativo'),
+(default, 'Sensor Ultrassônico', 'HC-SR04', 'Tampa flutuante', '4.00', '2024-06-28', 'Ativo');
+
+
+
+CREATE TABLE ConfiguracaoLimiares(
+idLimiar int primary key auto_increment not null,
+nomeLimiar varchar(100) not null,
+alturaDaAgua float not null,
+descricaoLimiar varchar(150) not null,
+alturaReservatorio float not null,
+);
+
+SELECT * FROM ConfiguracaoLimiares
+
+INSERT INTO ConfiguracaoLimiares VALUES
+(default, 'Limiar: Nível Muito Alto', 7.00, 'Limite máximo do nível da água em metros', 8.00),
+(default, 'Limiar: Nível Muito Baixo', 1.00, 'Limite mínimo do nível da água em metros' 8.00);
+
+
+
+CREATE TABLE LeituraDaAgua (
+idLeitura int primary key auto_increment not null,
+distanciaDaBorda float not null,
+nivelDaAgua float not null,
+alturaReservatorio float not null,
+volumeAguaLitros float not null,
+dataLeitura date not null,
+statusReservatorio varchar(150), constraint chkStatus check (statusReservatorio in ('Normal', 'Vigilante', 'Crítico'))
+);
+
+SELECT * FROM LeituraDaAgua
+
+INSERT INTO LeituraDaAgua VALUES 
+(default, 3.00, 5.00, 8.00, 80.000, 2024-09-06, 'Normal'),
+(default, 1.20, 6.80, 8.00, 60.000, '2024-09-02', 'Vigilante'),
+(default, 0.90, 7.10, 8.00, 55.000, '2024-09-13', 'Crítico'),
+(default, 4.00, 4.00, 8.00, 90.000, '2024-09-18', 'Normal'),
+(default, 3.50, 4.50, 8.00, 85.000, '2024-09-05', 'Vigilante'),
+(default, 1.00, 7.00, 8.00, 57.000, '2024-09-24', 'Crítico');
+
+
+
+CREATE TABLE Alertas (
+idAlerta int primary key auto_increment,
+dataDoAlerta date not null,
+tipoAlerta varchar (100) not null,
+textoAlerta varchar(150) not null,
+);
+
+SELECT * FROM Alertas
+
+INSERT INTO Alertas VALUES
+(default, '2024-09-06', 'Vigilante', 'Fique atento ao seu tanque!'),
+(default, '2024-09-10', 'Crítico', 'Seu tanque precisa de intervenção imediata!');
+
+
+
+
+
+
