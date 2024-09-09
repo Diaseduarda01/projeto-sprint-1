@@ -3,9 +3,9 @@ USE DaryoTM;
 
 CREATE TABLE Usuario(
 idUsuario int primary key auto_increment,
-nomeUsuario varchar(25) NOT NULL,
-emailUsuario varchar(60),
-loginUsuario varchar(20) NOT NULL UNIQUE,
+nomeCompletoUsuario varchar(50) not null,
+emailUsuario varchar(60)not null,
+loginUsuario varchar(20) not null,
 senhaUsuario varchar(8)not null,
 telefoneUsuario varchar(15)not null,
 nivelAcesso varchar(50) not null, constraint chkNivel check (nivelAcesso in ('Administrador', 'Usuário Comum'))
@@ -16,7 +16,6 @@ SELECT * FROM Usuario
 INSERT INTO Usuario VALUES
 (default, 'Clara Silva', 'clarasilva@sptech.school', 'clarasilva95', '13579@Cs', '11912345678', 'Administrador'),
 (default, 'Felipe Alves', 'felipealves@sptech.school', 'felipealves01', '0987#Fa', '11919386582', 'Usuário Comum');
-
 
 
 CREATE TABLE Empresa(
@@ -41,11 +40,11 @@ INSERT INTO Empresa VALUES
 
 CREATE TABLE Reservatorios(
 idReservatorio int primary key auto_increment,
-nomeReservatorio varchar (50), 
-localReservatorio  varchar (50),
-capacidadeMaxLitros float,
-altura float,
-diametro float, 
+nomeReservatorio varchar (50)not null,
+localReservatorio  varchar (50)not null,
+capacidadeMaxLitros float not null,
+altura float not null,
+diametro float not null
 );
 
 SELECT * FROM Reservatorios
@@ -54,7 +53,7 @@ INSERT INTO Reservatorios VALUES
 (default, 'Reservatório Leste', 'Fazenda Nascente do Sol', 80.000, 8.00, 4.00),
 (default, 'Reservatório Oeste', 'Fazenda Nascente do Sol', 40.000, 4.00, 2.00),
 (default, 'Reservatório Norte', 'Fazenda Rio Sereno', 90.000, 9.00, 4.50),
-(default, 'Reservatório Sul', 'Fazenda Rio Sereno', , 20.000, 2.00, 1.00);
+(default, 'Reservatório Sul', 'Fazenda Rio Sereno', 20.000, 2.00, 1.00);
 
 
 
@@ -65,14 +64,14 @@ nomeSensor varchar (30) not null,
 posicaoDoSensor varchar(100) not null,
 alcanceSensor float not null, 
 dataDaInstalacao date not null,
-statusSensor varchar(30) not null,
+statusSensor varchar(30) not null
 );
 
 SELECT * FROM Sensores
 
 INSERT INTO Sensores VALUES
-(default, 'Sensor Ultrassônico', 'HC-SR04', 'Topo', '4.00', '2024-02-20', 'Ativo'),
-(default, 'Sensor Ultrassônico', 'HC-SR04', 'Tampa flutuante', '4.00', '2024-06-28', 'Ativo');
+(default, 'Sensor Ultrassônico', 'HC-SR04', 'Topo', 4.00, '2024-02-20', 'Ativo'),
+(default, 'Sensor Ultrassônico', 'HC-SR04', 'Tampa flutuante', 4.00, '2024-06-28', 'Ativo');
 
 
 
@@ -81,14 +80,16 @@ idLimiar int primary key auto_increment not null,
 nomeLimiar varchar(100) not null,
 alturaDaAgua float not null,
 descricaoLimiar varchar(150) not null,
-alturaReservatorio float not null,
+alturaReservatorio float not null
 );
 
 SELECT * FROM ConfiguracaoLimiares
 
+-- Para definir os dois limiares estamos considerando que 1 metro é a a altura necessária para distinguir se o nível está acima ou abaixo do que é considerado seguro/aceitável
+
 INSERT INTO ConfiguracaoLimiares VALUES
 (default, 'Limiar: Nível Muito Alto', 7.00, 'Limite máximo do nível da água em metros', 8.00),
-(default, 'Limiar: Nível Muito Baixo', 1.00, 'Limite mínimo do nível da água em metros' 8.00);
+(default, 'Limiar: Nível Muito Baixo', 1.00, 'Limite mínimo do nível da água em metros', 8.00);
 
 
 
@@ -104,21 +105,21 @@ statusReservatorio varchar(150), constraint chkStatus check (statusReservatorio 
 
 SELECT * FROM LeituraDaAgua
 
-INSERT INTO LeituraDaAgua VALUES 
-(default, 3.00, 5.00, 8.00, 80.000, 2024-09-06, 'Normal'),
-(default, 1.20, 6.80, 8.00, 60.000, '2024-09-02', 'Vigilante'),
-(default, 0.90, 7.10, 8.00, 55.000, '2024-09-13', 'Crítico'),
-(default, 4.00, 4.00, 8.00, 90.000, '2024-09-18', 'Normal'),
-(default, 3.50, 4.50, 8.00, 85.000, '2024-09-05', 'Vigilante'),
-(default, 1.00, 7.00, 8.00, 57.000, '2024-09-24', 'Crítico');
+-- Para calcularmos o volume aproximado da água utilizamos o cálculo de Volume = V = π * r * h
+-- O que se traduz para: 3,14 * raio da base (metade do diâmetro elevado a 2) * altura
+-- Consideramos 8 de altura e 4 de diâmetro de um reservatório cilíndrico
 
+INSERT INTO LeituraDaAgua VALUES 
+(default, 3.00, 5.00, 8.00, 60.000, 2024-09-06, 'Normal'),
+(default, 1.20, 6.80, 8.00, 85.000, '2024-09-02', 'Vigilante'),
+(default, 0.90, 7.10, 8.00, 90.000, '2024-09-13', 'Crítico');
 
 
 CREATE TABLE Alertas (
 idAlerta int primary key auto_increment,
 dataDoAlerta date not null,
-tipoAlerta varchar (100) not null,
-textoAlerta varchar(150) not null,
+tipoAlerta varchar (100),constraint chkAlerta check (tipoAlerta in ('Vigilante', 'Crítico')),
+textoAlerta varchar(150),constraint chkAlerta check (tipoAlerta in ('Fique atento ao seu tanque!', 'Seu tanque precisa de intervenção imediata!'))
 );
 
 SELECT * FROM Alertas
