@@ -8,7 +8,7 @@ emailUsuario varchar(60)not null,
 loginUsuario varchar(20) not null,
 senhaUsuario varchar(8)not null,
 telefoneUsuario varchar(15)not null,
-nivelAcesso varchar(50) not null, constraint chkNivel check (nivelAcesso in ('Administrador', 'Usuário Comum'))
+nivelAcesso varchar(20) not null, constraint chkNivel check (nivelAcesso in ('Administrador', 'Usuário Comum'))
 );
 
 SELECT * FROM Usuario;
@@ -20,11 +20,11 @@ INSERT INTO Usuario VALUES
 
 CREATE TABLE Empresa(
 idEmpresa int primary key auto_increment,
-nomeEmpresa varchar(100) not null,
+nomeEmpresa varchar(50) not null,
 cnpjEmpresa varchar(14) not null unique,
-enderecoEmpresa varchar(100)not null,
+enderecoEmpresa varchar(50)not null,
 telefoneEmpresa varchar(15)not null,
-emailEmpresa varchar(100)not null,
+emailEmpresa varchar(40)not null,
 dataDoCadastro date not null
 );
 
@@ -40,8 +40,8 @@ INSERT INTO Empresa VALUES
 
 CREATE TABLE Reservatorios(
 idReservatorio int primary key auto_increment,
-nomeReservatorio varchar (50)not null,
-localReservatorio  varchar (50)not null,
+nomeReservatorio varchar (40)not null,
+localReservatorio  varchar (60)not null,
 capacidadeMaxLitros float not null,
 altura float not null,
 diametro float not null
@@ -59,12 +59,12 @@ INSERT INTO Reservatorios VALUES
 
 CREATE TABLE Sensores(
 idSensor int primary key auto_increment,
-tipoSensor varchar(50) not null,
-nomeSensor varchar (30) not null,
-posicaoDoSensor varchar(100) not null,
+tipoSensor varchar(30) not null,
+nomeSensor varchar (20) not null,
+posicaoDoSensor varchar(40) not null,
 alcanceSensor float not null, 
 dataDaInstalacao date not null,
-statusSensor varchar(30) not null
+statusSensor varchar(10) not null, constraint chkStatus check (statusSensor in ('Ativo', 'Inativo'))
 );
 
 SELECT * FROM Sensores;
@@ -74,25 +74,6 @@ INSERT INTO Sensores VALUES
 (default, 'Sensor Ultrassônico', 'HC-SR04', 'Tampa flutuante', 4.00, '2024-06-28', 'Ativo');
 
 
-
-CREATE TABLE ConfiguracaoLimiares(
-idLimiar int primary key auto_increment not null,
-nomeLimiar varchar(100) not null,
-alturaDaAgua float not null,
-descricaoLimiar varchar(150) not null,
-alturaReservatorio float not null
-);
-
-SELECT * FROM ConfiguracaoLimiares;
-
--- Para definir os dois limiares estamos considerando que 1 metro é a a altura necessária para distinguir se o nível está acima ou abaixo do que é considerado seguro/aceitável
-
-INSERT INTO ConfiguracaoLimiares VALUES
-(default, 'Limiar: Nível Muito Alto', 7.00, 'Limite máximo do nível da água em metros', 8.00),
-(default, 'Limiar: Nível Muito Baixo', 1.00, 'Limite mínimo do nível da água em metros', 8.00);
-
-
-
 CREATE TABLE LeituraDaAgua (
 idLeitura int primary key auto_increment not null,
 distanciaDaBorda float not null,
@@ -100,7 +81,7 @@ nivelDaAgua float not null,
 alturaReservatorio float not null,
 volumeAguaLitros float not null,
 dataLeitura date not null,
-statusReservatorio varchar(150), constraint chkStatus check (statusReservatorio in ('Normal', 'Vigilante', 'Crítico'))
+statusReservatorio varchar(15), constraint chkStatus check (statusReservatorio in ('Normal', 'Vigilante', 'Crítico'))
 );
 
 SELECT * FROM LeituraDaAgua;
@@ -118,8 +99,8 @@ INSERT INTO LeituraDaAgua VALUES
 CREATE TABLE Alertas (
 idAlerta int primary key auto_increment,
 dataDoAlerta date not null,
-tipoAlerta varchar (100),constraint chkAlerta check (tipoAlerta in ('Vigilante', 'Crítico')),
-textoAlerta varchar(150),constraint chkAlerta check (tipoAlerta in ('Fique atento ao seu tanque!', 'Seu tanque precisa de intervenção imediata!'))
+tipoAlerta varchar (15), constraint chkAlerta check (tipoAlerta in ('Vigilante', 'Crítico')),
+textoAlerta varchar(50), constraint chkAlerta check (textoAlerta in ('Fique atento ao seu tanque!', 'Seu tanque precisa de intervenção imediata!'))
 );
 
 SELECT * FROM Alertas;
