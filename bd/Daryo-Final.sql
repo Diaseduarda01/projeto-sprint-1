@@ -11,7 +11,7 @@ telefoneUsuario varchar(15)not null,
 nivelAcesso varchar(50) not null, constraint chkNivel check (nivelAcesso in ('Administrador', 'Usuário Comum'))
 );
 
-SELECT * FROM Usuario
+SELECT * FROM Usuario;
 
 INSERT INTO Usuario VALUES
 (default, 'Clara Silva', 'clarasilva@sptech.school', 'clarasilva95', '13579@Cs', '11912345678', 'Administrador'),
@@ -28,7 +28,7 @@ emailEmpresa varchar(100)not null,
 dataDoCadastro date not null
 );
 
-SELECT * FROM Empresa
+SELECT * FROM Empresa;
 
 INSERT INTO Empresa VALUES
 (default, 'Fazenda Nascente do Sol', '12345678000195', 'Avenida das Hortências, N° 45', '1112233344', 'contatonascente@sptech.school', '2024-01-15'),
@@ -47,7 +47,7 @@ altura float not null,
 diametro float not null
 );
 
-SELECT * FROM Reservatorios
+SELECT * FROM Reservatorios;
 
 INSERT INTO Reservatorios VALUES
 (default, 'Reservatório Leste', 'Fazenda Nascente do Sol', 80.000, 8.00, 4.00),
@@ -67,7 +67,7 @@ dataDaInstalacao date not null,
 statusSensor varchar(30) not null
 );
 
-SELECT * FROM Sensores
+SELECT * FROM Sensores;
 
 INSERT INTO Sensores VALUES
 (default, 'Sensor Ultrassônico', 'HC-SR04', 'Topo', 4.00, '2024-02-20', 'Ativo'),
@@ -83,7 +83,7 @@ descricaoLimiar varchar(150) not null,
 alturaReservatorio float not null
 );
 
-SELECT * FROM ConfiguracaoLimiares
+SELECT * FROM ConfiguracaoLimiares;
 
 -- Para definir os dois limiares estamos considerando que 1 metro é a a altura necessária para distinguir se o nível está acima ou abaixo do que é considerado seguro/aceitável
 
@@ -103,7 +103,7 @@ dataLeitura date not null,
 statusReservatorio varchar(150), constraint chkStatus check (statusReservatorio in ('Normal', 'Vigilante', 'Crítico'))
 );
 
-SELECT * FROM LeituraDaAgua
+SELECT * FROM LeituraDaAgua;
 
 -- Para calcularmos o volume aproximado da água utilizamos o cálculo de Volume = V = π * r * h
 -- O que se traduz para: 3,14 * raio da base (metade do diâmetro elevado a 2) * altura
@@ -122,7 +122,7 @@ tipoAlerta varchar (100),constraint chkAlerta check (tipoAlerta in ('Vigilante',
 textoAlerta varchar(150),constraint chkAlerta check (tipoAlerta in ('Fique atento ao seu tanque!', 'Seu tanque precisa de intervenção imediata!'))
 );
 
-SELECT * FROM Alertas
+SELECT * FROM Alertas;
 
 INSERT INTO Alertas VALUES
 (default, '2024-09-06', 'Vigilante', 'Fique atento ao seu tanque!'),
