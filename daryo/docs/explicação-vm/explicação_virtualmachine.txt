@@ -1,0 +1,11 @@
+VIRTUAL MACHINE
+
+Para que serve?
+
+A virtual machine vai ser nosso ambiente apartado, nosso ambiente
+virtual que vai guardar o banco de dados e o resultado final do nosso projeto
+
+Quais são as vantagens?
+
+A VM traz diversos beneficios para o projeto, ela é menos custosa, fornece mais segurança, viabilidade e flexibilidade
+possibilitando processos de automação e manutenção com mais facilidade.
