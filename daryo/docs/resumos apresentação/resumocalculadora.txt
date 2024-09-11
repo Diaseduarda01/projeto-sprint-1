@@ -1,0 +1,13 @@
+O simulador inicia com a coleta das informações do cliente, que são essenciais para calcular o retorno financeiro a partir do investimento no projeto. Essa etapa permite personalizar os resultados de acordo com os dados fornecidos.
+
+Na segunda tela, os resultados são divididos em cinco blocos. 
+
+O Bloco 1 foca no custo evitado, primeiro ele evidência o volume de água economizado por ano. E com base nos estudos do professor Pravat Kumarz, atualmente existe a redução de até 50% das percas, com o uso de um sistema de monitoramento eficiente. Então, com o valor do investido do cliente, calculamos quanto dentro desses 50% será o percentual de redução dele 
+
+A partir dos anos que sera feito esse investimento, com o valor da água e o percentual de reducao, convertemos para um valor que seja equivalente aos custos evitados com a implementação do nosso projeto 
+
+O Bloco 2 apresenta os ganhos anuais obtidos a partir da capacidade do reservatório e do percentual de redução. Isso retorna o volume de água economizado, que é multiplicado pelo valor da água. O resultado é o lucro anual que o cliente obterá com o projeto, acumulado ao longo dos anos de investimento, fornecendo o valor total economizado.
+
+No Bloco 3, o retorno acumulado mostra o percentual líquido para o cliente, evidenciando se o projeto é valido para investimento. Além disso, apresenta de forma clara o impacto ambiental dessa economia, demonstrando o equivalente em piscinas olímpicas de água poupadas anualmente.
+
+Por fim, o Bloco 4 calcula a quantidade de sensores necessários no reservatório, considerando a altura e o tipo do reservatório do cliente, para garantir o monitoramento adequado.
