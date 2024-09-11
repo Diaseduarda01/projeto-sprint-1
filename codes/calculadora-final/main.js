@@ -71,16 +71,9 @@ function calcularRetorno() {
         return;
     }
 
-<<<<<<< HEAD
     // Calcular o volume de água economizado anualmente
     var volumeAguaEconomizadoAnualmente = capacidade * reducaoPercentual;
 
-=======
-
-    
-    // Calcular o volume de água economizado anualmente
-    var volumeAguaEconomizadoAnualmente = capacidade * reducaoPercentual
->>>>>>> 6c084dac3b0dcda04f9732eda61001b3063f63b9
     var ganhoObtidoAnual = volumeAguaEconomizadoAnualmente * valorAgua; // Ganho anual com a economia de água
 
     // Calcular o ganho acumulado ao longo dos anos
