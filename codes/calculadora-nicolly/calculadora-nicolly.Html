@@ -1,62 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+<head> 
+    <title>Daryo</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
     <center>
-        <h1>Daryo</h1>
-        <h2>Simulando seu retorno financeiro com nossa empresa</h2>
-        Insira a capacidade do resevatório em litros:
-        <input id="capacidade_reservatorio" type="number"><br><br>
-        Insira o consumo médio diário em litros:
-        <input id="consumo_diario" type="number"><br><br>
-        Digite a estimativa de dias até o reabastecimento do resevatório:
-        <input id="estimativa_em_dias" type="number"><br><br>
-        Digite a estimativa de perda de água diária:
-        <input id="perda_diaria" type="number"><br><br>
-        Digite o valor da água em litros:
-        <input id="valor_agua" type="number"><br><br>
-        Quantos anos deseja investir?
-        <input id="estimativa_em_anos" type="number">
-        <br><br>
-        <button onclick="calcular_investimento()">
-            Calcular investimento
-        </button>
-        <div id="valor_final_investimento"></div>
+        <h1>Calculadora de investimentos Daryo</h1>
+        <br>
+    Insira a capacidade do resevatório em litros:
+    <input id="capacidade_reservatorio" type="number"><br><br>
+    Insira o consumo médio diário em litros:
+    <input id="consumo_diario" type="number"><br><br>
+    Digite a estimativa de dias até o reabastecimento do resevatório:
+    <input id="estimativa_em_dias" type="number"><br><br>
+    Digite a estimativa de perda de água diária:
+    <input  id="perda_diaria" type="number"><br><br>
+    Digite o valor da água em litros: 
+    <input  id="valor_agua" type="number"><br><br>
+    Quantos anos deseja investir?
+    <input id="estimativa_em_anos" type="number"> 
+    <br><br><br>
+    <button onclick="calcular_investimento()">
+        Calcular investimento
+    </button>
+    <div id="valor_final_investimento"></div>
     </center>
 </body>
-
 </html>
 <script>
-    function calcular_investimento() {
+    function calcular_investimento(){
         // convertendo variáveis
-        const capacidadeDoReservatorio = Number(capacidade_reservatorio.value)
-        const consumoDiario = Number(consumo_diario.value)
-        const valorAgua = Number(valor_agua.value)
-        const qtdDiasAteReabastecimento = Number(estimativa_em_dias.value)
-        const perdasAguaDiaria = Number(perda_diaria.value)
+        const capacidadeDoReservatorio = Number (capacidade_reservatorio.value)
+        const consumoDiario = Number (consumo_diario.value)
+        const valorAgua = Number(valor_agua.value) 
+        const qtdDiasAteReabastecimento = Number (estimativa_em_dias.value)
+        const perdasAguaDiaria = Number (perda_diaria.value)
         const investimentoEmAnos = Number(estimativa_em_anos.value)
 
         // valor de lucro com o projeto
         const reducaoCustos = 0.30;
 
         // calculo de quando o reservatório deve ser reabastecido 
-        var diasParaReabastecimento = (capacidadeDoReservatorio / consumoDiario) - 1
+        var diasParaReabastecimento= (capacidadeDoReservatorio/consumoDiario)-1
 
-        var resultado = ``
+        var resultado= ``
 
-        if (qtdDiasAteReabastecimento > diasParaReabastecimento) {
+        if(qtdDiasAteReabastecimento > diasParaReabastecimento){
             resultado = `<center><br><br> Você pode corrigir seu reabastecimento para 
             ${diasParaReabastecimento.toFixed(0)} dia(s) para reduzir os gastos desnecessários <br>`
-        } else if (qtdDiasAteReabastecimento == diasParaReabastecimento) {
+        } else if( qtdDiasAteReabastecimento == diasParaReabastecimento){
             resultado = `<center><br><br> Seu reabastecimento está ideal para seu consumo diário`
         } else {
-            resultado = `<center><br><br> Cuidado, você está reabastecendo mais do que deveria, 
+           resultado = `<center><br><br> Cuidado, você está reabastecendo mais do que deveria, 
             você deve corrigir para ${diasParaReabastecimento.toFixed(0)} dias`
         }
 
@@ -64,17 +62,17 @@
         const valorAguaPerdida = perdasAguaDiaria * valorAgua
 
         // calculo do valor ganhos com redução de perdas 
-        const aguaEconomizada = valorAguaPerdida * reducaoCustos
+         const aguaEconomizada = valorAguaPerdida * reducaoCustos
 
-        // ganhos em anos:
+          // ganhos em anos:
         const lucroFinal = (aguaEconomizada * investimentoEmAnos) * 365
 
-        resultado +=
-            `<center><br> Com a capacidade do reservatório de ${capacidadeDoReservatorio} 
+        resultado += 
+        `<center><br> Com a capacidade do reservatório de ${capacidadeDoReservatorio} 
         litros e o consumo diário de ${consumoDiario} litros<br>
         <br> O lucro total ao longo de ${investimentoEmAnos} anos(s) será de R$ ${aguaEconomizada.toFixed(2)}
         ao investir no nosso projeto</center>`
 
-        valor_final_investimento.innerHTML = resultado
+        valor_final_investimento.innerHTML = resultado 
     }
 </script>

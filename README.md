@@ -14,7 +14,7 @@ utilizando o sensor ultrassônico **HC-SR04**, conhecido por sua alta precisão.
 
 ## 🗂️ Estrutura do Repositório
 
-- **📁 `docs/`**: Documentação completa do projeto, incluindo relatórios e materiais de apoio.
+- **📁 `daryo/docs`**: Documentação completa do projeto, incluindo relatórios e materiais de apoio.
 - **📁 `codes/`**: Código-fonte do sistema em desenvolvimento.
 - **📁 `bd/`**: Arquivos relacionados ao banco de dados, utilizado para armazenar as informações coletadas pelo sistema.
 

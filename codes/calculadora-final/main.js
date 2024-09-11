@@ -73,9 +73,12 @@ function calcularRetorno() {
 
     // Calcular o volume de água economizado anualmente
     var volumeAguaEconomizadoAnualmente = capacidade * reducaoPercentual;
+
     
     // Calcular o volume de água economizado anualmente
     var volumeAguaEconomizadoAnualmente = capacidade * reducaoPercentual
+
+
     var ganhoObtidoAnual = volumeAguaEconomizadoAnualmente * valorAgua; // Ganho anual com a economia de água
 
     // Calcular o ganho acumulado ao longo dos anos
@@ -95,25 +98,25 @@ function calcularRetorno() {
         <ul style="list-style-type: none; padding-left: 0;">
             <li>
                 <p><b>O volume de água economizado por ano é:</b> 
-                    <b>${volumeAguaEconomizadoAnualmente.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} m³</b>.
+                    <b>${volumeAguaEconomizadoAnualmente.toLocaleString('pt-BR', { slyte: 'currency', currency: 'BRL' })} m³</b>.
                     <br>Estudos realizados por Pravat Kumar Shit indicam que sistemas de controle de água <br>
                     como o proposto podem reduzir até 50% de perdas em áreas agrícolas, resultando em economia significativa. <br>
-                    Dito isso, com seu investimento de <b>R$ ${investimento.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b>,
+                    Dito isso, com seu investimento de <b>R$ ${investimento.toLocaleString('pt-BR', { slyte: 'currency', currency: 'BRL' })}</b>,
                     seu porcentual de redução chegará até: <b>${(reducaoPercentual * 100)}%</b>.
                 </p>
             </li>
 
             <li>
                 <p>
-                    <b>O custo evitado em</b> <b>${anos} anos</b>, considerando o valor atual da água que é de <b>R$ ${valorAgua.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} por m³</b> e a redução projetada que é de <b>${(reducaoPercentual * 100)}%</b>, <br>
-                    seria de <b>R$ ${custoEvitado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b>,
+                    <b>O custo evitado em</b> <b>${anos} anos</b>, considerando o valor atual da água que é de <b>R$ ${valorAgua.toLocaleString('pt-BR', { slyte: 'currency', currency: 'BRL' })} por m³</b> e a redução projetada que é de <b>${(reducaoPercentual * 100)}%</b>, <br>
+                    seria de <b>R$ ${custoEvitado.toLocaleString('pt-BR', { slyte: 'currency', currency: 'BRL' })}</b>,
                     garantindo maior sustentabilidade financeira.
                 </p>
             </li>
 
             <li>
                 <p><b>O ganho obtido com a economia de água por ano é:</b> 
-                    <b>R$ ${ganhoObtidoAnual.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b>.
+                    <b>R$ ${ganhoObtidoAnual.toLocaleString('pt-BR', { slyte: 'currency', currency: 'BRL' })}</b>.
                     <br>Essa economia reflete uma gestão eficiente dos recursos hídricos.
                 </p>
             </li>
@@ -122,7 +125,7 @@ function calcularRetorno() {
 
             <li>
                 <p><b>O ganho acumulado em ${anos} anos é:</b> 
-                    <b>R$ ${ganhoAcumulado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b>.
+                    <b>R$ ${ganhoAcumulado.toLocaleString('pt-BR', { slyte: 'currency', currency: 'BRL' })}</b>.
                     <br>Ao longo dos anos, a economia gerada aumenta consideravelmente, maximizando os benefícios para o seu negócio.
                 </p>
             </li>
@@ -131,7 +134,7 @@ function calcularRetorno() {
              
             <li>
                 <p><b>O retorno acumulado após ${anos} anos é:</b> 
-                    <b>${RetornoAcumulado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</b>.
+                    <b>${RetornoAcumulado.toLocaleString('pt-BR', { slyte: 'currency', currency: 'BRL' })}%</b>.
                     <br>O retorno financeiro proporcionado pela economia de água ao longo do tempo é significativo, reforçando a importância de uma gestão eficiente.
                 </p>
             </li>
