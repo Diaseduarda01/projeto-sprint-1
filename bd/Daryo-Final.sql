@@ -1,23 +1,6 @@
 CREATE DATABASE DaryoTM;
 USE DaryoTM;
 
-CREATE TABLE Usuario(
-idUsuario int primary key auto_increment,
-nomeCompletoUsuario varchar(50) not null,
-emailUsuario varchar(60)not null,
-loginUsuario varchar(20) not null,
-senhaUsuario varchar(8)not null,
-telefoneUsuario varchar(15)not null,
-nivelAcesso varchar(20) not null, constraint chkNivel check (nivelAcesso in ('Administrador', 'Usuário Comum'))
-);
-
-SELECT * FROM Usuario;
-
-INSERT INTO Usuario VALUES
-(default, 'Clara Silva', 'clarasilva@sptech.school', 'clarasilva95', '13579@Cs', '11912345678', 'Administrador'),
-(default, 'Felipe Alves', 'felipealves@sptech.school', 'felipealves01', '0987#Fa', '11919386582', 'Usuário Comum');
-
-
 CREATE TABLE Empresa(
 idEmpresa int primary key auto_increment,
 nomeEmpresa varchar(50) not null,
@@ -35,6 +18,24 @@ INSERT INTO Empresa VALUES
 (default, 'Fazenda Reserva Hídrica', '98765432000156', 'Estrada do Sertão, N° 200', '2223344556', 'infohidrica@sptech.school', '2023-11-22'),
 (default, 'Fazenda Rio Sereno', '19283746000162', 'Rua do Rio, N° 78', '3334455667', 'riosereno@sptech.school', '2024-03-09'),
 (default, 'Fazenda Campos Verdes', '56473829000180', 'Rodovia Verde, N° 120', '4445566778', 'fazendacampos@sptech.school', '2024-05-30');
+
+
+
+CREATE TABLE Usuario(
+idUsuario int primary key auto_increment,
+nomeCompletoUsuario varchar(50) not null,
+emailUsuario varchar(60)not null,
+loginUsuario varchar(20) not null,
+senhaUsuario varchar(8)not null,
+telefoneUsuario varchar(15)not null,
+nivelAcesso varchar(20) not null, constraint chkNivel check (nivelAcesso in ('Administrador', 'Usuário Comum'))
+);
+
+SELECT * FROM Usuario;
+
+INSERT INTO Usuario VALUES
+(default, 'Clara Silva', 'clarasilva@sptech.school', 'clarasilva95', '13579@Cs', '11912345678', 'Administrador'),
+(default, 'Felipe Alves', 'felipealves@sptech.school', 'felipealves01', '0987#Fa', '11919386582', 'Usuário Comum');
 
 
 
