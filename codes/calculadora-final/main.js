@@ -71,16 +71,11 @@ function calcularRetorno() {
         return;
     }
 
-<<<<<<< HEAD
     // Calcular o volume de água economizado anualmente
     var volumeAguaEconomizadoAnualmente = capacidade * reducaoPercentual;
-
-=======
-
     
     // Calcular o volume de água economizado anualmente
     var volumeAguaEconomizadoAnualmente = capacidade * reducaoPercentual
->>>>>>> 6c084dac3b0dcda04f9732eda61001b3063f63b9
     var ganhoObtidoAnual = volumeAguaEconomizadoAnualmente * valorAgua; // Ganho anual com a economia de água
 
     // Calcular o ganho acumulado ao longo dos anos
@@ -88,7 +83,6 @@ function calcularRetorno() {
 
     // Calcular o custo acumulado de manutenção ao longo dos anos
     var custoEvitado = (custoManutencao * anos) * reducaoPercentual;
-
 
     // Calcular o retorno esperado durante os anos, levando em consideração o investimento
     var RetornoAcumulado = ((ganhoAcumulado - custoEvitado) / investimento) * 100;
@@ -111,7 +105,7 @@ function calcularRetorno() {
 
             <li>
                 <p>
-                    <b>O custo evitado em</b> <b>${anos} anos</b>, considerando o valor atual da água que é de <b>${valorAgua} por m³</b> e a redução projetada que é de <b>${(reducaoPercentual * 100)}%</b>, <br>
+                    <b>O custo evitado em</b> <b>${anos} anos</b>, considerando o valor atual da água que é de <b>R$ ${valorAgua.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} por m³</b> e a redução projetada que é de <b>${(reducaoPercentual * 100)}%</b>, <br>
                     seria de <b>R$ ${custoEvitado.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</b>,
                     garantindo maior sustentabilidade financeira.
                 </p>
