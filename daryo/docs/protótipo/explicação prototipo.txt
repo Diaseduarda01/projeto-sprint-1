@@ -1,0 +1,19 @@
+*Protótipo do Site - Daryo*
+
+Para o design do protótipo do site, escolhemos um layout claro e organizado, destacando os principais blocos de conteúdo mais relevantes para nossos clientes.
+
+*Logo*: Inspirada no agronegócio, nossa logo combina uma imagem de fazenda com uma fonte clássica, representando o ambiente rural. O slogan adiciona um toque de tecnologia, refletindo nossa missão de inovação sustentável no setor agrícola.
+
+*Cores*: Usamos o verde, que simboliza sustentabilidade e crescimento; o azul, representando água e equilíbrio; e o branco, para manter o visual limpo e agradável à leitura.
+
+*Menu de navegação*: Simples e intuitivo, o menu oferece acesso rápido às informações sobre a empresa, o projeto e nossas soluções.
+
+*Sessões principais*: Começamos com uma introdução sobre a empresa, seguida pelo Simulador Financeiro, que permite calcular o retorno sobre o investimento. Também destacamos a sustentabilidade e o sensor HC-SR04, que são pilares do nosso projeto.
+
+*Serviços*: Em blocos visuais, apresentamos "Manutenção Otimizada", "Treinamento" e "Aumento de Lucratividade", facilitando a navegação e tornando a página mais atrativa.
+
+O nosso site terá um botão onde, se o cliente se interessar por nossos serviços, pode nos contatar.
+
+*Missão, Visão e Valores*: No final do site, há uma sessão dedicada à nossa missão, visão e valores, acessível pelo menu "Sobre Nós", onde o cliente pode entender nossos objetivos e princípios.
+
+Com este protótipo, buscamos oferecer uma experiência agradável e funcional, alinhada à nossa proposta de inovação e sustentabilidade no setor agrícola.
